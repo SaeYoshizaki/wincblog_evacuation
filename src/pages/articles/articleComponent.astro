@@ -107,10 +107,10 @@ const { userName = 'Default User', userImgSrc } = user; // userからuserNameと
             <div class="flex">
                 <a href={(`/articles/user/${userName}`)}>
                     <Image
-                        src={userImgSrc || '/default.png'}  <!-- デフォルト画像を設定 -->
+                        src={userImgSrc || '/default.png'}  
                         width={50}
                         height={50}
-                        alt=""
+                        alt={`${userName}のプロフィール画像`} 
                         class="rounded-md"
                     />
                 </a>
@@ -144,7 +144,7 @@ const { userName = 'Default User', userImgSrc } = user; // userからuserNameと
                     src={(props.classification === 'zenn.dev' ? '/zenn.png' : props.classification === 'qiita.com' ? '/qiita.png' : '/favicon.svg')}
                     width={20}
                     height={20}
-                    alt=""
+                    alt={`${props.classification}のアイコン`} 
                     class="rounded-md mr-2"
                 />
                 <div class="text-zinc-400">
