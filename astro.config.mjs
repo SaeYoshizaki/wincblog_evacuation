@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
-import dotenv from 'dotenv';
+import dotenv from '.env';
 
 // .envファイルを読み込む
 dotenv.config();
