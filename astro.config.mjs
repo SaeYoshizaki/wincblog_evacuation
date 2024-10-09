@@ -17,10 +17,11 @@ export default defineConfig({
           if (warning.code === 'UNRESOLVED_IMPORT') {
             return;
           }
-          warn(warning);
-        }
-      }
-    }
+          // 他の警告も無視
+          return; // これで警告を全て無視する
+        },
+      },
+    },
   },
   site: 'https://saeyoshizaki.github.io/',
   outDir: "./docs",
