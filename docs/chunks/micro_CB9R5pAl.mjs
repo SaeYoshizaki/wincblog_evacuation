@@ -1,11 +1,10 @@
-import { O } from './microcms-js-sdk_Bq7TDq0x.mjs';
+import { createClient } from 'microcms-js-sdk';
 
-const client = O({
+const client = createClient({
   serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN,
-  // サービスドメインを環境変数から取得
-  apiKey: process.env.MICROCMS_API_KEY
-  // APIキーを環境変数から取得
+  apiKey: process.env.MICROCMS_API_KEY,
 });
+
 const getUsers = async (queries) => {
   return await client.get({
     endpoint: "astro-blog-winc",
