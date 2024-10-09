@@ -1,6 +1,6 @@
 import { c as createAstro, a as createComponent, r as renderTemplate, b as renderComponent, m as maybeRenderHead, d as addAttribute } from '../chunks/astro/server_Bqsq_RjE.mjs';
 import 'kleur/colors';
-import { $ as $$Layout } from '../chunks/Layout_CW5fEElS.mjs';
+import { $ as $$Layout } from '../chunks/Layout_BZ3twD9b.mjs';
 import { O } from '../chunks/microcms-js-sdk_Bq7TDq0x.mjs';
 /* empty css                                      */
 export { renderers } from '../renderers.mjs';
@@ -56,9 +56,9 @@ const $$category = createComponent(async ($$result, $$props, $$slots) => {
     const content = posts[index].content.rendered.substring(4, 26);
     return renderTemplate`<li data-astro-cid-e6jqf47y>${index.toString()} <div class="blog" data-astro-cid-e6jqf47y> <div class="picture" data-astro-cid-e6jqf47y> <a${addAttribute(`./${postIds[index]}`, "href")} data-astro-cid-e6jqf47y> <img${addAttribute(`https://wincblogs.wordpress.com/wp-content/uploads/${year}/${month}/${postId}.jpg`, "src")}${addAttribute(postTitle, "alt")} class="post-image" data-astro-cid-e6jqf47y> </a> </div> <div class="article_sepalate_line" data-astro-cid-e6jqf47y></div> <div class="post" data-astro-cid-e6jqf47y> <a${addAttribute(`./${postIds[index]}`, "href")} class="title" data-astro-cid-e6jqf47y>${postTitle}</a> <p class="date" data-astro-cid-e6jqf47y>投稿日: ${year}年${month}月${date}日</p> <p class="explanation" data-astro-cid-e6jqf47y>${content}・・・</p> <div class="tsuzuki_botton" data-astro-cid-e6jqf47y> <a${addAttribute(`./${postIds[index]}`, "href")} class="tsuzuki" data-astro-cid-e6jqf47y>続きを読む</a> </div> </div> </div> </li>`;
   })} </ul>` : renderTemplate`<p data-astro-cid-e6jqf47y>投稿がありません</p>`} </div> <footer data-astro-cid-e6jqf47y> <p data-astro-cid-e6jqf47y>© 2024 Copyright: <span data-astro-cid-e6jqf47y><a data-astro-cid-e6jqf47y>コンピュータ研究会・WINC</a></span></p> </footer> </main> ` })} `;
-}, "C:/Users/saeyoshizaki/Desktop/2024hackathon/blog_wordpress/src/pages/[category].astro", void 0);
+}, "C:/Users/saeyoshizaki/Desktop/blog_evacuation/src/pages/[category].astro", void 0);
 
-const $$file = "C:/Users/saeyoshizaki/Desktop/2024hackathon/blog_wordpress/src/pages/[category].astro";
+const $$file = "C:/Users/saeyoshizaki/Desktop/blog_evacuation/src/pages/[category].astro";
 const $$url = "/wincblog-wordpress/[category]";
 
 const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({

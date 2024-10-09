@@ -1,7 +1,7 @@
 import { a as createComponent, r as renderTemplate, b as renderComponent, m as maybeRenderHead, d as addAttribute } from './astro/server_Bqsq_RjE.mjs';
 import 'kleur/colors';
-import { g as getUsers } from './micro_DFsiMxQf.mjs';
-import { $ as $$Layout } from './Layout_CW5fEElS.mjs';
+import { g as getUsers } from './micro_C9aFR00U.mjs';
+import { $ as $$Layout } from './Layout_BZ3twD9b.mjs';
 import { jsxs, jsx, Fragment } from 'react/jsx-runtime';
 import { useState, useEffect } from 'react';
 /* empty css                           */
@@ -126,7 +126,7 @@ const fetchAllArticles = async (user, token) => {
 const $$Article = createComponent(async ($$result, $$props, $$slots) => {
   const response = await getUsers({ fields: ["userName", "userImgSrc", "introduction", "zennId", "qiitaId", "gitUrl", "XUrl"] });
   const Resusers = response.contents;
-  const apiToken = "461c52bd05403452cf6c86a1b91c28aac04b5a34";
+  const apiToken = process.env.QIITA_TOKEN;
   const allArticles = (await Promise.all(Resusers.map((user) => fetchAllArticles(user, apiToken)))).flat().sort((a, b) => {
     return new Date(b.published_at).getTime() - new Date(a.published_at).getTime();
   });
@@ -144,9 +144,9 @@ Detail
                 </div>
               )
             ))}
-          </div> --> ${renderComponent($$result2, "ArticleList", ArticleList, { "client:load": true, "articles": allArticles, "client:component-hydration": "load", "client:component-path": "C:/Users/saeyoshizaki/Desktop/2024hackathon/blog_wordpress/src/pages/articles/articles", "client:component-export": "default", "data-astro-cid-4yqtncfb": true })} </div> </div> </body> ` })} `;
-}, "C:/Users/saeyoshizaki/Desktop/2024hackathon/blog_wordpress/src/pages/articles/article.astro", void 0);
-const $$file = "C:/Users/saeyoshizaki/Desktop/2024hackathon/blog_wordpress/src/pages/articles/article.astro";
+          </div> --> ${renderComponent($$result2, "ArticleList", ArticleList, { "client:load": true, "articles": allArticles, "client:component-hydration": "load", "client:component-path": "C:/Users/saeyoshizaki/Desktop/blog_evacuation/src/pages/articles/_articles", "client:component-export": "default", "data-astro-cid-4yqtncfb": true })} </div> </div> </body> ` })} `;
+}, "C:/Users/saeyoshizaki/Desktop/blog_evacuation/src/pages/articles/article.astro", void 0);
+const $$file = "C:/Users/saeyoshizaki/Desktop/blog_evacuation/src/pages/articles/article.astro";
 const $$url = "/wincblog-wordpress/articles/article";
 
 const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({

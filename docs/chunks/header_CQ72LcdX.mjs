@@ -185,7 +185,7 @@ const RetWindowWidth = () => {
 };
 
 const $$Header = createComponent(($$result, $$props, $$slots) => {
-  return renderTemplate`<html> <head><meta charset="UTF-8">${renderHead()}</head> <body style="border-bottom: 2px solid black; z-index: 999;"> ${renderComponent($$result, "RetWindowWidth", RetWindowWidth, { "client:load": true, "client:component-hydration": "load", "client:component-path": "C:/Users/saeyoshizaki/Desktop/2024hackathon/blog_wordpress/src/components/Header/header", "client:component-export": "default" })} </body></html>`;
-}, "C:/Users/saeyoshizaki/Desktop/2024hackathon/blog_wordpress/src/components/Header/header.astro", void 0);
+  return renderTemplate`<html> <head><meta charset="UTF-8">${renderHead()}</head> <body style="border-bottom: 2px solid black; z-index: 999;"> ${renderComponent($$result, "RetWindowWidth", RetWindowWidth, { "client:load": true, "client:component-hydration": "load", "client:component-path": "C:/Users/saeyoshizaki/Desktop/blog_evacuation/src/components/Header/header", "client:component-export": "default" })} </body></html>`;
+}, "C:/Users/saeyoshizaki/Desktop/blog_evacuation/src/components/Header/header.astro", void 0);
 
 export { $$Header as $ };

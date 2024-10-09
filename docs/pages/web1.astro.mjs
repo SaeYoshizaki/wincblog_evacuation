@@ -6,9 +6,9 @@ export { renderers } from '../renderers.mjs';
 
 const $$Web1 = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate`${maybeRenderHead()}<div class="carousel" data-astro-cid-kfctdxqw> <figure data-astro-cid-kfctdxqw> <img src="/web/picture1.jpg" alt="" data-astro-cid-kfctdxqw> <img src="/web/picture2.jpg" alt="" data-astro-cid-kfctdxqw> <img src="/web/picture3.jpg" alt="" data-astro-cid-kfctdxqw> <img src="/web/picture4.jpg" alt="" data-astro-cid-kfctdxqw> <img src="/web/picture5.jpg" alt="" data-astro-cid-kfctdxqw> </figure> </div>   `;
-}, "C:/Users/saeyoshizaki/Desktop/2024hackathon/blog_wordpress/src/pages/web1.astro", void 0);
+}, "C:/Users/saeyoshizaki/Desktop/blog_evacuation/src/pages/web1.astro", void 0);
 
-const $$file = "C:/Users/saeyoshizaki/Desktop/2024hackathon/blog_wordpress/src/pages/web1.astro";
+const $$file = "C:/Users/saeyoshizaki/Desktop/blog_evacuation/src/pages/web1.astro";
 const $$url = "/wincblog-wordpress/web1";
 
 const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
