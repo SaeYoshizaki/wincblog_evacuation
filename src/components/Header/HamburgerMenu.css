@@ -1,0 +1,66 @@
+.menu-container {
+  position: relative;
+}
+
+.hamburger {
+  cursor: pointer;
+  width: 40px;
+  height: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.line {
+  width: 100%;
+  height: 2px;
+  background-color: black;
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  right: -200px;
+  background-color: white; /* メニューの明るさを保持 */
+  width: 200px;
+  height: 100vh;
+  box-shadow: -4px 0 8px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease;
+  z-index: 1000; /* メニューをオーバーレイより上に表示 */
+}
+
+.menu.open {
+  right: 0;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 半透明の黒 */
+  z-index: 999; /* メニューの下に表示 */
+}
+
+.menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  padding: 10px 20px;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: black;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    width: 30px;
+    height: 20px;
+  }
+}
