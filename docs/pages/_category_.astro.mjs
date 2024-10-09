@@ -1,6 +1,6 @@
-import { c as createAstro, a as createComponent, r as renderTemplate, b as renderComponent, m as maybeRenderHead, d as addAttribute } from '../chunks/astro/server_Bqsq_RjE.mjs';
+import { c as createAstro, a as createComponent, r as renderTemplate, b as renderComponent, m as maybeRenderHead, d as addAttribute } from '../chunks/astro/server_7JcQRhs2.mjs';
 import 'kleur/colors';
-import { $ as $$Layout } from '../chunks/Layout_BZ3twD9b.mjs';
+import { $ as $$Layout } from '../chunks/Layout_C1Ks5nC-.mjs';
 import { O } from '../chunks/microcms-js-sdk_Bq7TDq0x.mjs';
 /* empty css                                      */
 export { renderers } from '../renderers.mjs';
@@ -59,7 +59,7 @@ const $$category = createComponent(async ($$result, $$props, $$slots) => {
 }, "C:/Users/saeyoshizaki/Desktop/blog_evacuation/src/pages/[category].astro", void 0);
 
 const $$file = "C:/Users/saeyoshizaki/Desktop/blog_evacuation/src/pages/[category].astro";
-const $$url = "/wincblog-wordpress/[category]";
+const $$url = "/wincblog_evacuation/[category]";
 
 const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,

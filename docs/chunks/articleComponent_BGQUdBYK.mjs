@@ -1,6 +1,6 @@
-import { c as createAstro, a as createComponent, r as renderTemplate, m as maybeRenderHead, d as addAttribute, b as renderComponent, F as Fragment } from './astro/server_Bqsq_RjE.mjs';
+import { c as createAstro, a as createComponent, r as renderTemplate, m as maybeRenderHead, d as addAttribute, b as renderComponent, F as Fragment } from './astro/server_7JcQRhs2.mjs';
 import 'kleur/colors';
-import { $ as $$Image } from './Image_CSWLOB2Y.mjs';
+import { $ as $$Image } from './Image_BUg84Gel.mjs';
 /* empty css                                    */
 
 const $$Astro = createAstro("https://saeyoshizaki.github.io/");
@@ -14,7 +14,7 @@ const $$ArticleComponent = createComponent(($$result, $$props, $$slots) => {
 }, "C:/Users/saeyoshizaki/Desktop/blog_evacuation/src/pages/articles/articleComponent.astro", void 0);
 
 const $$file = "C:/Users/saeyoshizaki/Desktop/blog_evacuation/src/pages/articles/articleComponent.astro";
-const $$url = "/wincblog-wordpress/articles/articleComponent";
+const $$url = "/wincblog_evacuation/articles/articleComponent";
 
 const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
     __proto__: null,

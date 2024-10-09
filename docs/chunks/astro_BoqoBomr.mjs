@@ -1,3 +1,3 @@
 import 'kleur/colors';
-import './astro/server_Bqsq_RjE.mjs';
+import './astro/server_7JcQRhs2.mjs';
 import 'clsx';

@@ -1,6 +1,6 @@
-import { a as createComponent, r as renderTemplate, b as renderComponent, m as maybeRenderHead } from '../chunks/astro/server_Bqsq_RjE.mjs';
+import { a as createComponent, r as renderTemplate, b as renderComponent, m as maybeRenderHead } from '../chunks/astro/server_7JcQRhs2.mjs';
 import 'kleur/colors';
-import { $ as $$Layout } from '../chunks/Layout_BZ3twD9b.mjs';
+import { $ as $$Layout } from '../chunks/Layout_C1Ks5nC-.mjs';
 import { O } from '../chunks/microcms-js-sdk_Bq7TDq0x.mjs';
 /* empty css                                 */
 export { renderers } from '../renderers.mjs';
@@ -25,7 +25,7 @@ const $$Index = createComponent(async ($$result, $$props, $$slots) => {
 }, "C:/Users/saeyoshizaki/Desktop/blog_evacuation/src/pages/index.astro", void 0);
 
 const $$file = "C:/Users/saeyoshizaki/Desktop/blog_evacuation/src/pages/index.astro";
-const $$url = "/wincblog-wordpress";
+const $$url = "/wincblog_evacuation";
 
 const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,

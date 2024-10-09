@@ -1,9 +1,9 @@
 import { O } from './microcms-js-sdk_Bq7TDq0x.mjs';
 
 const client = O({
-  serviceDomain: undefined                                       ,
+  serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN,
   // サービスドメインを環境変数から取得
-  apiKey: undefined                                
+  apiKey: process.env.MICROCMS_API_KEY
   // APIキーを環境変数から取得
 });
 const getUsers = async (queries) => {

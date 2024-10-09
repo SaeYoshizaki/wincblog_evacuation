@@ -1,9 +1,9 @@
-import { a as createComponent, r as renderTemplate, m as maybeRenderHead, b as renderComponent, d as addAttribute } from '../../chunks/astro/server_Bqsq_RjE.mjs';
+import { a as createComponent, r as renderTemplate, m as maybeRenderHead, b as renderComponent, d as addAttribute } from '../../chunks/astro/server_7JcQRhs2.mjs';
 import 'kleur/colors';
-import { $ as $$Image } from '../../chunks/Image_CSWLOB2Y.mjs';
+import { $ as $$Image } from '../../chunks/Image_BUg84Gel.mjs';
 /* empty css                                    */
-import { $ as $$Header } from '../../chunks/header_CQ72LcdX.mjs';
-import { g as getUsers } from '../../chunks/micro_C9aFR00U.mjs';
+import { $ as $$Header } from '../../chunks/header_2OGFhpqd.mjs';
+import { g as getUsers } from '../../chunks/micro_CB9R5pAl.mjs';
 export { renderers } from '../../renderers.mjs';
 
 const $$Users = createComponent(async ($$result, $$props, $$slots) => {
@@ -13,7 +13,7 @@ const $$Users = createComponent(async ($$result, $$props, $$slots) => {
 }, "C:/Users/saeyoshizaki/Desktop/blog_evacuation/src/pages/articles/users.astro", void 0);
 
 const $$file = "C:/Users/saeyoshizaki/Desktop/blog_evacuation/src/pages/articles/users.astro";
-const $$url = "/wincblog-wordpress/articles/users";
+const $$url = "/wincblog_evacuation/articles/users";
 
 const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,

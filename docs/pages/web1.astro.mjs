@@ -1,4 +1,4 @@
-import { a as createComponent, r as renderTemplate, m as maybeRenderHead } from '../chunks/astro/server_Bqsq_RjE.mjs';
+import { a as createComponent, r as renderTemplate, m as maybeRenderHead } from '../chunks/astro/server_7JcQRhs2.mjs';
 import 'kleur/colors';
 import 'clsx';
 /* empty css                                */
@@ -9,7 +9,7 @@ const $$Web1 = createComponent(($$result, $$props, $$slots) => {
 }, "C:/Users/saeyoshizaki/Desktop/blog_evacuation/src/pages/web1.astro", void 0);
 
 const $$file = "C:/Users/saeyoshizaki/Desktop/blog_evacuation/src/pages/web1.astro";
-const $$url = "/wincblog-wordpress/web1";
+const $$url = "/wincblog_evacuation/web1";
 
 const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,

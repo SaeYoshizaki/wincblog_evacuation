@@ -1,7 +1,7 @@
-import { a as createComponent, r as renderTemplate, b as renderComponent, m as maybeRenderHead, d as addAttribute } from './astro/server_Bqsq_RjE.mjs';
+import { a as createComponent, r as renderTemplate, b as renderComponent, m as maybeRenderHead, d as addAttribute } from './astro/server_7JcQRhs2.mjs';
 import 'kleur/colors';
-import { g as getUsers } from './micro_C9aFR00U.mjs';
-import { $ as $$Layout } from './Layout_BZ3twD9b.mjs';
+import { g as getUsers } from './micro_CB9R5pAl.mjs';
+import { $ as $$Layout } from './Layout_C1Ks5nC-.mjs';
 import { jsxs, jsx, Fragment } from 'react/jsx-runtime';
 import { useState, useEffect } from 'react';
 /* empty css                           */
@@ -147,7 +147,7 @@ Detail
           </div> --> ${renderComponent($$result2, "ArticleList", ArticleList, { "client:load": true, "articles": allArticles, "client:component-hydration": "load", "client:component-path": "C:/Users/saeyoshizaki/Desktop/blog_evacuation/src/pages/articles/_articles", "client:component-export": "default", "data-astro-cid-4yqtncfb": true })} </div> </div> </body> ` })} `;
 }, "C:/Users/saeyoshizaki/Desktop/blog_evacuation/src/pages/articles/article.astro", void 0);
 const $$file = "C:/Users/saeyoshizaki/Desktop/blog_evacuation/src/pages/articles/article.astro";
-const $$url = "/wincblog-wordpress/articles/article";
+const $$url = "/wincblog_evacuation/articles/article";
 
 const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
     __proto__: null,
