@@ -1,19 +1,15 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
-import dotenv from 'dotenv'; // 修正：'.env'を'dotenv'に変更
-// .envファイルを読み込む
-dotenv.config();
 
 export default defineConfig({
   integrations: [react()],
   vite: {
     ssr: {
-      noExternal: ['microcms-js-sdk'],  
+      noExternal: ['microcms-js-sdk'],
     },
     build: {
       rollupOptions: {
         onwarn(warning) {
-          // UNRESOLVED_IMPORTの警告を無視
           if (warning.code === 'UNRESOLVED_IMPORT') {
             return;
           }
