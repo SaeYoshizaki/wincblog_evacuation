@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Article } from "../../types";
-import './articleComponent.css';
+import './_articleComponent.css';
 
 const Component = (article: Article) => {
     const published = new Date(article.published_at);

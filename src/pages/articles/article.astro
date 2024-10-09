@@ -5,7 +5,7 @@ import ArticleComponent from "./articleComponent.astro";
 import Header from "../../components/Header/header.astro";
 import { getUsers } from "../../libs/micro";
 import Layout from "../../layouts/Layout.astro";
-import ArticleList from "./articles";
+import ArticleList from "./_articles";
 
 const response = await getUsers({fields: ["userName", "userImgSrc", "introduction", "zennId", "qiitaId", "gitUrl", "XUrl"]});
 
