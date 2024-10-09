@@ -5,6 +5,7 @@ const props = Astro.props as Article;
 
 const published = new Date(props.published_at);
 const updated = new Date(props.updated_at);
+const { userName = 'Default User' } = props.data || {};
 ---
 
 <style>
