@@ -12,7 +12,7 @@ export default defineConfig({
     },
     build: {
       rollupOptions: {
-        onwarn(warning, warn) {
+        onwarn(warning) {
           // UNRESOLVED_IMPORTの警告を無視
           if (warning.code === 'UNRESOLVED_IMPORT') {
             return;
