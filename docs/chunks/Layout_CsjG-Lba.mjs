@@ -1,6 +1,6 @@
-import { c as createAstro, a as createComponent, r as renderTemplate, d as addAttribute, e as renderHead, b as renderComponent, f as renderSlot } from './astro/server_7JcQRhs2.mjs';
+import { c as createAstro, a as createComponent, r as renderTemplate, d as addAttribute, e as renderHead, b as renderComponent, f as renderSlot } from './astro/server_gsJH1SME.mjs';
 import 'kleur/colors';
-import { $ as $$Header } from './header_2OGFhpqd.mjs';
+import { $ as $$Header } from './header_CfA91Ej_.mjs';
 /* empty css                              */
 
 const $$Astro = createAstro("https://saeyoshizaki.github.io/");

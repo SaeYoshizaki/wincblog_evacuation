@@ -1,9 +1,9 @@
-import { c as createAstro, a as createComponent, r as renderTemplate, m as maybeRenderHead, b as renderComponent } from '../../../chunks/astro/server_7JcQRhs2.mjs';
+import { c as createAstro, a as createComponent, r as renderTemplate, m as maybeRenderHead, b as renderComponent } from '../../../chunks/astro/server_gsJH1SME.mjs';
 import 'kleur/colors';
-import { $ as $$Image } from '../../../chunks/Image_BUg84Gel.mjs';
-import { f as fetchAllArticles } from '../../../chunks/article_DuxyJ5Rv.mjs';
-import { $ as $$ArticleComponent } from '../../../chunks/articleComponent_BGQUdBYK.mjs';
-import { $ as $$Header } from '../../../chunks/header_2OGFhpqd.mjs';
+import { $ as $$Image } from '../../../chunks/Image_CzJIxuql.mjs';
+import { f as fetchAllArticles } from '../../../chunks/article_CR9EGoCO.mjs';
+import { $ as $$ArticleComponent } from '../../../chunks/articleComponent_BD8fzgLW.mjs';
+import { $ as $$Header } from '../../../chunks/header_CfA91Ej_.mjs';
 /* empty css                                        */
 export { renderers } from '../../../renderers.mjs';
 
@@ -245,7 +245,7 @@ const $$name = createComponent(async ($$result, $$props, $$slots) => {
   Astro2.self = $$name;
   const { name } = Astro2.params;
   const props = users.filter((user) => user.userName === name)[0];
-  const allArticles = (await fetchAllArticles(props, process.env.QIITA_TOKEN)).flat().sort((a, b) => {
+  const allArticles = (await fetchAllArticles(props, "461c52bd05403452cf6c86a1b91c28aac04b5a34")).flat().sort((a, b) => {
     return new Date(b.published_at).getTime() - new Date(a.published_at).getTime();
   });
   return renderTemplate`<meta charset="UTF-8"> ${maybeRenderHead()}<body style="display: block; padding: 0; margin: 0;" data-astro-cid-y6vcawnp> ${renderComponent($$result, "Header", $$Header, { "data-astro-cid-y6vcawnp": true })} <div class="content" data-astro-cid-y6vcawnp> <div class="container" data-astro-cid-y6vcawnp> <div class="profile-section" data-astro-cid-y6vcawnp> ${renderComponent($$result, "Image", $$Image, { "src": props.userImgSrc, "width": 100, "height": 100, "alt": "User profile image", "data-astro-cid-y6vcawnp": true })} <div class="profile-info" data-astro-cid-y6vcawnp> <h2 data-astro-cid-y6vcawnp>${props.userName}</h2> <p data-astro-cid-y6vcawnp>${props.introduction}</p> </div> <div class="links" data-astro-cid-y6vcawnp> <a href="" data-astro-cid-y6vcawnp> <svg xmlns="http://www.w3.org/2000/svg" width="28" height="32" viewBox="0 0 448 512" data-astro-cid-y6vcawnp><path fill="currentColor" d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm297.1 84L257.3 234.6L379.4 396h-95.6L209 298.1L123.3 396H75.8l111-126.9L69.7 116h98l67.7 89.5l78.2-89.5zm-37.8 251.6L153.4 142.9h-28.3l171.8 224.7h26.3z" data-astro-cid-y6vcawnp></path></svg> </a> <a href="" data-astro-cid-y6vcawnp> <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16" data-astro-cid-y6vcawnp><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59c.4.07.55-.17.55-.38c0-.19-.01-.82-.01-1.49c-2.01.37-2.53-.49-2.69-.94c-.09-.23-.48-.94-.82-1.13c-.28-.15-.68-.52-.01-.53c.63-.01 1.08.58 1.23.82c.72 1.21 1.87.87 2.33.66c.07-.52.28-.87.51-1.07c-1.78-.2-3.64-.89-3.64-3.95c0-.87.31-1.59.82-2.15c-.08-.2-.36-1.02.08-2.12c0 0 .67-.21 2.2.82c.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82c.44 1.1.16 1.92.08 2.12c.51.56.82 1.27.82 2.15c0 3.07-1.87 3.75-3.65 3.95c.29.25.54.73.54 1.48c0 1.07-.01 1.93-.01 2.2c0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" data-astro-cid-y6vcawnp></path></svg> </a> </div> </div> <h1 data-astro-cid-y6vcawnp>Articles</h1> <div class="articles-container" data-astro-cid-y6vcawnp> ${allArticles.map((article, index) => index % 2 === 0 ? renderTemplate`<div class="article-right" data-astro-cid-y6vcawnp> ${renderComponent($$result, "ArticleComponent", $$ArticleComponent, { ...article, "data-astro-cid-y6vcawnp": true })} </div>` : renderTemplate`<div class="article-left" data-astro-cid-y6vcawnp> ${renderComponent($$result, "ArticleComponent", $$ArticleComponent, { ...article, "data-astro-cid-y6vcawnp": true })} </div>`)} </div> </div> </div> </body>`;

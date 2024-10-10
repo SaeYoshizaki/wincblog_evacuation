@@ -1,63 +1,52 @@
-import { c as createAstro, a as createComponent, r as renderTemplate, b as renderComponent, m as maybeRenderHead, d as addAttribute } from '../chunks/astro/server_7JcQRhs2.mjs';
+import { a as createComponent, r as renderTemplate, b as renderComponent, m as maybeRenderHead, d as addAttribute } from '../chunks/astro/server_gsJH1SME.mjs';
 import 'kleur/colors';
-import { $ as $$Layout } from '../chunks/Layout_C1Ks5nC-.mjs';
+import { $ as $$Layout } from '../chunks/Layout_CsjG-Lba.mjs';
 import { O } from '../chunks/microcms-js-sdk_Bq7TDq0x.mjs';
 /* empty css                                      */
 export { renderers } from '../renderers.mjs';
 
-const $$Astro = createAstro("https://saeyoshizaki.github.io/");
 async function getStaticPaths() {
-  const response = await fetch("https://public-api.wordpress.com/wp/v2/sites/wincblogs.wordpress.com/categories");
-  const categories = await response.json();
+  const res = await fetch("https://public-api.wordpress.com/wp/v2/sites/wincblogs.wordpress.com/categories");
+  const categories = await res.json();
   return categories.map((category) => ({
-    params: {
-      category: category.slug
-    }
+    params: { category: category.slug }
   }));
 }
-const $$category = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
-  Astro2.self = $$category;
-  const client = O({
-    serviceDomain: "your-service-domain",
-    apiKey: "your-api-key"
-  });
-  async function fetchData() {
-    try {
-      const response2 = await client.getList({ endpoint: "your-endpoint" });
-      console.log(response2);
-    } catch (error) {
-      console.error(error);
+async function getStaticProps({ params }) {
+  const res = await fetch("https://public-api.wordpress.com/wp/v2/sites/wincblogs.wordpress.com/categories");
+  const categories = await res.json();
+  const currentCategory = categories.find((cat) => cat.slug === params.category);
+  if (!currentCategory) {
+    return { notFound: true };
+  }
+  const postsRes = await fetch(`https://public-api.wordpress.com/wp/v2/sites/wincblogs.wordpress.com/posts?categories=${currentCategory.id}`);
+  const posts = await postsRes.json();
+  return {
+    props: {
+      currentCategory,
+      posts
     }
-  }
-  fetchData();
-  const response = await fetch("https://public-api.wordpress.com/wp/v2/sites/wincblogs.wordpress.com/categories");
-  const categories = await response.json();
-  const currentCategory = categories.find((cat) => cat.slug === Astro2.params.category);
-  const categoryName = currentCategory ? currentCategory.name : "";
-  currentCategory ? currentCategory.description : "";
-  const categoryId = currentCategory ? currentCategory.id : null;
-  let posts = [];
-  let postTitles = [];
-  let postIds = [];
-  let postDates = [];
-  if (categoryId) {
-    const postsResponse = await fetch(`https://public-api.wordpress.com/wp/v2/sites/wincblogs.wordpress.com/posts?categories=${categoryId}`);
-    posts = await postsResponse.json();
-    postTitles = posts.map((post) => post.title.rendered);
-    postIds = posts.map((post) => post.id);
-    postDates = posts.map((post) => post.date);
-  }
-  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "wincblog", "data-astro-cid-e6jqf47y": true }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<main data-astro-cid-e6jqf47y> <p class="guide" data-astro-cid-e6jqf47y><a href="http://localhost:4321" data-astro-cid-e6jqf47y>home</a> > <a href="http://localhost:4321" data-astro-cid-e6jqf47y>blog</a> > <a${addAttribute("http://localhost:4321/${categoryId}", "href")} data-astro-cid-e6jqf47y>Web team</a></p> <div class="eye-catch" data-astro-cid-e6jqf47y> <h1 data-astro-cid-e6jqf47y>${categoryName}</h1> <div class="carousel" data-astro-cid-e6jqf47y> <figure data-astro-cid-e6jqf47y> <img src="web/picture1.jpg" alt="" data-astro-cid-e6jqf47y> <img src="web/picture2.jpg" alt="" data-astro-cid-e6jqf47y> <img src="web/picture3.jpg" alt="" data-astro-cid-e6jqf47y> <img src="web/picture4.jpg" alt="" data-astro-cid-e6jqf47y> <img src="web/picture5.jpg" alt="" data-astro-cid-e6jqf47y> </figure> </div>  </div> <div class="New_articles" data-astro-cid-e6jqf47y> ${postTitles.length > 0 ? renderTemplate`<ul data-astro-cid-e6jqf47y> ${postTitles.map((postTitle, index) => {
+  };
+}
+const $$category = createComponent(async ($$result, $$props, $$slots) => {
+  O({
+    serviceDomain: "astro-blog-winc",
+    apiKey: "xs05PmTpSmeNVgBeZzvv1gGfaWWisMrJ4aQJ"
+  });
+  const currentCategory = { name: "", slug: "" };
+  const posts = [];
+  const postTitles = posts.map((post) => post.title.rendered);
+  const postIds = posts.map((post) => post.id);
+  const postDates = posts.map((post) => post.date);
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "wincblog", "data-astro-cid-e6jqf47y": true }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<main data-astro-cid-e6jqf47y> <p class="guide" data-astro-cid-e6jqf47y><a href="/" data-astro-cid-e6jqf47y>home</a> > <a href="/blog" data-astro-cid-e6jqf47y>blog</a> > <a${addAttribute("/${currentCategory.slug}", "href")} data-astro-cid-e6jqf47y>${currentCategory.name}</a></p> <div class="eye-catch" data-astro-cid-e6jqf47y> <h1 data-astro-cid-e6jqf47y>${currentCategory.name}</h1> <div class="carousel" data-astro-cid-e6jqf47y> <figure data-astro-cid-e6jqf47y> <img src="web/picture1.jpg" alt="" data-astro-cid-e6jqf47y> <img src="web/picture2.jpg" alt="" data-astro-cid-e6jqf47y> <img src="web/picture3.jpg" alt="" data-astro-cid-e6jqf47y> <img src="web/picture4.jpg" alt="" data-astro-cid-e6jqf47y> <img src="web/picture5.jpg" alt="" data-astro-cid-e6jqf47y> </figure> </div> </div> <div class="New_articles" data-astro-cid-e6jqf47y> ${postTitles.length > 0 ? renderTemplate`<ul data-astro-cid-e6jqf47y> ${postTitles.map((postTitle, index) => {
     const year = postDates[index].substring(0, 4);
     const month = postDates[index].substring(5, 7);
     const date = postDates[index].substring(8, 10);
     const postId = postIds[index];
-    const content = posts[index].content.rendered.substring(4, 26);
-    return renderTemplate`<li data-astro-cid-e6jqf47y>${index.toString()} <div class="blog" data-astro-cid-e6jqf47y> <div class="picture" data-astro-cid-e6jqf47y> <a${addAttribute(`./${postIds[index]}`, "href")} data-astro-cid-e6jqf47y> <img${addAttribute(`https://wincblogs.wordpress.com/wp-content/uploads/${year}/${month}/${postId}.jpg`, "src")}${addAttribute(postTitle, "alt")} class="post-image" data-astro-cid-e6jqf47y> </a> </div> <div class="article_sepalate_line" data-astro-cid-e6jqf47y></div> <div class="post" data-astro-cid-e6jqf47y> <a${addAttribute(`./${postIds[index]}`, "href")} class="title" data-astro-cid-e6jqf47y>${postTitle}</a> <p class="date" data-astro-cid-e6jqf47y>投稿日: ${year}年${month}月${date}日</p> <p class="explanation" data-astro-cid-e6jqf47y>${content}・・・</p> <div class="tsuzuki_botton" data-astro-cid-e6jqf47y> <a${addAttribute(`./${postIds[index]}`, "href")} class="tsuzuki" data-astro-cid-e6jqf47y>続きを読む</a> </div> </div> </div> </li>`;
+    const contentSnippet = posts[index].content.rendered.substring(0, 50);
+    return renderTemplate`<li data-astro-cid-e6jqf47y> <div class="blog" data-astro-cid-e6jqf47y> <div class="picture" data-astro-cid-e6jqf47y> <a${addAttribute(`/posts/${postId}`, "href")} data-astro-cid-e6jqf47y> <img${addAttribute(`https://wincblogs.wordpress.com/wp-content/uploads/${year}/${month}/${postId}.jpg`, "src")}${addAttribute(postTitle, "alt")} class="post-image" data-astro-cid-e6jqf47y> </a> </div> <div class="article_sepalate_line" data-astro-cid-e6jqf47y></div> <div class="post" data-astro-cid-e6jqf47y> <a${addAttribute(`/posts/${postId}`, "href")} class="title" data-astro-cid-e6jqf47y>${postTitle}</a> <p class="date" data-astro-cid-e6jqf47y>投稿日: ${year}年${month}月${date}日</p> <p class="explanation" data-astro-cid-e6jqf47y>${contentSnippet}...</p> <div class="tsuzuki_botton" data-astro-cid-e6jqf47y> <a${addAttribute(`/posts/${postId}`, "href")} class="tsuzuki" data-astro-cid-e6jqf47y>続きを読む</a> </div> </div> </div> </li>`;
   })} </ul>` : renderTemplate`<p data-astro-cid-e6jqf47y>投稿がありません</p>`} </div> <footer data-astro-cid-e6jqf47y> <p data-astro-cid-e6jqf47y>© 2024 Copyright: <span data-astro-cid-e6jqf47y><a data-astro-cid-e6jqf47y>コンピュータ研究会・WINC</a></span></p> </footer> </main> ` })} `;
 }, "C:/Users/saeyoshizaki/Desktop/blog_evacuation/src/pages/[category].astro", void 0);
-
 const $$file = "C:/Users/saeyoshizaki/Desktop/blog_evacuation/src/pages/[category].astro";
 const $$url = "/wincblog_evacuation/[category]";
 
@@ -66,6 +55,7 @@ const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   default: $$category,
   file: $$file,
   getStaticPaths,
+  getStaticProps,
   url: $$url
 }, Symbol.toStringTag, { value: 'Module' }));
 

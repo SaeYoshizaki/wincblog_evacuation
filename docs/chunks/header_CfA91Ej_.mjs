@@ -1,4 +1,4 @@
-import { a as createComponent, r as renderTemplate, e as renderHead, b as renderComponent } from './astro/server_7JcQRhs2.mjs';
+import { a as createComponent, r as renderTemplate, e as renderHead, b as renderComponent } from './astro/server_gsJH1SME.mjs';
 import 'kleur/colors';
 import { jsxs, jsx } from 'react/jsx-runtime';
 import { useState, useEffect } from 'react';

@@ -1,7 +1,7 @@
-import { a as createComponent, r as renderTemplate, b as renderComponent, m as maybeRenderHead, d as addAttribute } from './astro/server_7JcQRhs2.mjs';
+import { a as createComponent, r as renderTemplate, b as renderComponent, m as maybeRenderHead, d as addAttribute } from './astro/server_gsJH1SME.mjs';
 import 'kleur/colors';
-import { g as getUsers } from './micro_CB9R5pAl.mjs';
-import { $ as $$Layout } from './Layout_C1Ks5nC-.mjs';
+import { g as getUsers } from './micro_Ch1f7P36.mjs';
+import { $ as $$Layout } from './Layout_CsjG-Lba.mjs';
 import { jsxs, jsx, Fragment } from 'react/jsx-runtime';
 import { useState, useEffect } from 'react';
 /* empty css                           */
@@ -126,7 +126,7 @@ const fetchAllArticles = async (user, token) => {
 const $$Article = createComponent(async ($$result, $$props, $$slots) => {
   const response = await getUsers({ fields: ["userName", "userImgSrc", "introduction", "zennId", "qiitaId", "gitUrl", "XUrl"] });
   const Resusers = response.contents;
-  const apiToken = process.env.QIITA_TOKEN;
+  const apiToken = "461c52bd05403452cf6c86a1b91c28aac04b5a34";
   const allArticles = (await Promise.all(Resusers.map((user) => fetchAllArticles(user, apiToken)))).flat().sort((a, b) => {
     return new Date(b.published_at).getTime() - new Date(a.published_at).getTime();
   });
