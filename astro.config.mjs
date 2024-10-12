@@ -20,6 +20,6 @@ export default defineConfig({
     },
   },
   site: 'https://saeyoshizaki.github.io/',
-  outDir: "./docs",
+  outDir: "./dist",
   base: '/wincblog_evacuation'
 });
