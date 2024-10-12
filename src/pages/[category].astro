@@ -31,10 +31,18 @@ export async function getStaticPaths() {
   const res = await fetch('https://public-api.wordpress.com/wp/v2/sites/wincblogs.wordpress.com/categories');
   const categories: Category[] = await res.json();
 
-  return categories.map(category => ({
+  // パスを配列として返す
+  const paths = categories.map((category: Category) => ({
     params: { category: category.slug },
   }));
+
+  // オブジェクト全体ではなく paths のみを返す
+  return {
+    paths, // 配列を返す
+    fallback: false, // 必要に応じて fallback オプションを設定
+  };
 }
+
 
 export async function getStaticProps({ params }: { params: { category: string } }) {
   const res = await fetch('https://public-api.wordpress.com/wp/v2/sites/wincblogs.wordpress.com/categories');
@@ -66,7 +74,7 @@ const postDates = posts.map(post => post.date);
 ---
 <Layout title="wincblog">
   <main>
-    <p class="guide"><a href="/">home</a> > <a href="/blog">blog</a> > <a href={'/${currentCategory.slug}'}>{currentCategory.name}</a></p>
+    <p class="guide"><a href="/">home</a><a href="/blog">blog</a><a href={'/${currentCategory.slug}'}>{currentCategory.name}</a></p>
     
     <div class="eye-catch">
       <h1>{currentCategory.name}</h1>

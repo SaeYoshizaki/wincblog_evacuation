@@ -8,9 +8,15 @@ export { renderers } from '../renderers.mjs';
 async function getStaticPaths() {
   const res = await fetch("https://public-api.wordpress.com/wp/v2/sites/wincblogs.wordpress.com/categories");
   const categories = await res.json();
-  return categories.map((category) => ({
+  const paths = categories.map((category) => ({
     params: { category: category.slug }
   }));
+  return {
+    paths,
+    // 配列を返す
+    fallback: false
+    // 必要に応じて fallback オプションを設定
+  };
 }
 async function getStaticProps({ params }) {
   const res = await fetch("https://public-api.wordpress.com/wp/v2/sites/wincblogs.wordpress.com/categories");
@@ -38,7 +44,7 @@ const $$category = createComponent(async ($$result, $$props, $$slots) => {
   const postTitles = posts.map((post) => post.title.rendered);
   const postIds = posts.map((post) => post.id);
   const postDates = posts.map((post) => post.date);
-  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "wincblog", "data-astro-cid-e6jqf47y": true }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<main data-astro-cid-e6jqf47y> <p class="guide" data-astro-cid-e6jqf47y><a href="/" data-astro-cid-e6jqf47y>home</a> > <a href="/blog" data-astro-cid-e6jqf47y>blog</a> > <a${addAttribute("/${currentCategory.slug}", "href")} data-astro-cid-e6jqf47y>${currentCategory.name}</a></p> <div class="eye-catch" data-astro-cid-e6jqf47y> <h1 data-astro-cid-e6jqf47y>${currentCategory.name}</h1> <div class="carousel" data-astro-cid-e6jqf47y> <figure data-astro-cid-e6jqf47y> <img src="web/picture1.jpg" alt="" data-astro-cid-e6jqf47y> <img src="web/picture2.jpg" alt="" data-astro-cid-e6jqf47y> <img src="web/picture3.jpg" alt="" data-astro-cid-e6jqf47y> <img src="web/picture4.jpg" alt="" data-astro-cid-e6jqf47y> <img src="web/picture5.jpg" alt="" data-astro-cid-e6jqf47y> </figure> </div> </div> <div class="New_articles" data-astro-cid-e6jqf47y> ${postTitles.length > 0 ? renderTemplate`<ul data-astro-cid-e6jqf47y> ${postTitles.map((postTitle, index) => {
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "wincblog", "data-astro-cid-e6jqf47y": true }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<main data-astro-cid-e6jqf47y> <p class="guide" data-astro-cid-e6jqf47y><a href="/" data-astro-cid-e6jqf47y>home</a><a href="/blog" data-astro-cid-e6jqf47y>blog</a><a${addAttribute("/${currentCategory.slug}", "href")} data-astro-cid-e6jqf47y>${currentCategory.name}</a></p> <div class="eye-catch" data-astro-cid-e6jqf47y> <h1 data-astro-cid-e6jqf47y>${currentCategory.name}</h1> <div class="carousel" data-astro-cid-e6jqf47y> <figure data-astro-cid-e6jqf47y> <img src="web/picture1.jpg" alt="" data-astro-cid-e6jqf47y> <img src="web/picture2.jpg" alt="" data-astro-cid-e6jqf47y> <img src="web/picture3.jpg" alt="" data-astro-cid-e6jqf47y> <img src="web/picture4.jpg" alt="" data-astro-cid-e6jqf47y> <img src="web/picture5.jpg" alt="" data-astro-cid-e6jqf47y> </figure> </div> </div> <div class="New_articles" data-astro-cid-e6jqf47y> ${postTitles.length > 0 ? renderTemplate`<ul data-astro-cid-e6jqf47y> ${postTitles.map((postTitle, index) => {
     const year = postDates[index].substring(0, 4);
     const month = postDates[index].substring(5, 7);
     const date = postDates[index].substring(8, 10);
