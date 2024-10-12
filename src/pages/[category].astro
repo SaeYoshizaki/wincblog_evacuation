@@ -1,12 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { createClient } from 'microcms-js-sdk';
-
-// Define the microCMS client
-const client = createClient({
-  serviceDomain: import.meta.env.MICROCMS_SERVICE_DOMAIN,
-  apiKey: import.meta.env.MICROCMS_API_KEY,
-});
 
 type Category = {
   id?: number;
@@ -26,47 +19,19 @@ type Post = {
 
 const posts: Post[] = [];
 
-
 export async function getStaticPaths() {
   const res = await fetch('https://public-api.wordpress.com/wp/v2/sites/wincblogs.wordpress.com/categories');
-  const categories: Category[] = await res.json();
+  const categories = await res.json();
 
-  // パスを配列として返す
-  const paths = categories.map((category: Category) => ({
-    params: { category: category.slug },
+  const paths = categories.map((category: { slug: string; }) => ({
+    params: { category: decodeURIComponent(category.slug) }, // デコードしてから使用
   }));
 
-  // オブジェクト全体ではなく paths のみを返す
-  return {
-    paths, // 配列を返す
-    fallback: false, // 必要に応じて fallback オプションを設定
-  };
+  return paths;
 }
 
 
 
-export async function getStaticProps({ params }: { params: { category: string } }) {
-  const res = await fetch('https://public-api.wordpress.com/wp/v2/sites/wincblogs.wordpress.com/categories');
-  const categories: Category[] = await res.json();
-
-  const currentCategory = categories.find(cat => cat.slug === params.category);
-
-  if (!currentCategory) {
-    return { notFound: true };
-  }
-
-  const postsRes = await fetch(`https://public-api.wordpress.com/wp/v2/sites/wincblogs.wordpress.com/posts?categories=${currentCategory.id}`);
-  const posts: Post[] = await postsRes.json();
-
-  return {
-    props: {
-      currentCategory,
-      posts,
-    },
-  };
-}
-
-// Data available from the `getStaticProps` function
 
 const postTitles = posts.map(post => post.title.rendered);
 const postIds = posts.map(post => post.id);
@@ -75,7 +40,7 @@ const postDates = posts.map(post => post.date);
 ---
 <Layout title="wincblog">
   <main>
-    <p class="guide"><a href="/">home</a><a href="/blog">blog</a><a href={'/${currentCategory.slug}'}>{currentCategory.name}</a></p>
+    <p class="guide"><a href="/">home</a><a href="/blog">blog</a><a href={`/category/${currentCategory.slug}`}>{currentCategory.name}</a></p>
     
     <div class="eye-catch">
       <h1>{currentCategory.name}</h1>
@@ -98,20 +63,20 @@ const postDates = posts.map(post => post.date);
             const month = postDates[index].substring(5, 7);
             const date = postDates[index].substring(8, 10);
             const postId = postIds[index];
-            const contentSnippet = posts[index].content.rendered.substring(0, 50); // Sample content
+            const contentSnippet = posts[index].content.rendered.substring(0, 50);
 
             return (
-              <li>
-                <div class="blog">
-                  <div class="picture">
-                    <a href={`/posts/${postId}`}>
-                      <img
-                        src={`https://wincblogs.wordpress.com/wp-content/uploads/${year}/${month}/${postId}.jpg`}
-                        alt={postTitle}
-                        class="post-image"
-                      />
-                    </a>
-                  </div>
+        <li>
+          <div class="blog">
+            <div class="picture">
+              <a href={`/posts/${postId}`}>
+                <img
+                  src={`https://wincblogs.wordpress.com/wp-content/uploads/${year}/${month}/${postId}.jpg`}
+                  alt={postTitle}
+                  class="post-image"
+                />
+              </a>
+            </div>
                   <div class="article_sepalate_line"></div>
                   <div class="post">
                     <a href={`/posts/${postId}`} class="title">{postTitle}</a>
@@ -130,6 +95,30 @@ const postDates = posts.map(post => post.date);
         <p>投稿がありません</p>
       )}
     </div>
+
+    <div class="additional-content">
+      <h1>{currentCategory.name}</h1>
+      {postTitles.length > 0 ? (
+        postTitles.map((postTitle: string, index: number) => {
+          const year = postDates[index].substring(0, 4);
+          const month = postDates[index].substring(5, 7);
+          const date = postDates[index].substring(8, 10);
+          const postId = postIds[index];
+          const contentSnippet = posts[index].content.rendered.substring(0, 50); // Sample content
+
+          return (
+            <div>
+              <h2>{postTitle}</h2>
+              <p>{`${year}-${month}-${date}`}</p>
+              <p>{contentSnippet}</p>
+            </div>
+          );
+        })
+      ) : (
+        <p>No posts found.</p>
+      )}
+    </div>
+
     <footer>
       <p>© 2024 Copyright: <span><a>コンピュータ研究会・WINC</a></span></p>
     </footer>
