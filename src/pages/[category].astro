@@ -1,49 +1,87 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { createClient } from 'microcms-js-sdk';
 
+// クライアントの作成
+const client = createClient({
+  serviceDomain: 'your-service-domain',
+  apiKey: 'your-api-key',
+});
+
+// データの取得関数
+async function fetchData() {
+  try {
+    const response = await client.getList({ endpoint: 'your-endpoint' });
+    console.log(response);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// データを取得
+fetchData();
 type Category = {
-  id?: number;
+  id: number;
   name: string;
+  description: string;
   slug: string;
-  description?: string;
 };
-
-const currentCategory: Category = { name: '', slug: '' };
 
 type Post = {
   id: number;
-  title: { rendered: string };
-  content: { rendered: string };
+  title: {
+    rendered: string;
+  };
   date: string;
+  featured_media: number;
+  content: {
+    rendered: string;
+  };
 };
 
-const posts: Post[] = [];
+
+const response = await fetch('https://public-api.wordpress.com/wp/v2/sites/wincblogs.wordpress.com/categories');
+const categories: Category[] = await response.json();
 
 export async function getStaticPaths() {
-  const res = await fetch('https://public-api.wordpress.com/wp/v2/sites/wincblogs.wordpress.com/categories');
-  const categories = await res.json();
+  const response = await fetch('https://public-api.wordpress.com/wp/v2/sites/wincblogs.wordpress.com/categories');
+  const categories: Category[] = await response.json();
 
-  const paths = categories.map((category: { slug: string; }) => ({
-    params: { category: decodeURIComponent(category.slug) }, 
+  return categories.map((category) => ({
+    params: {
+      category: category.slug,
+    },
   }));
-
-  return paths;
 }
 
+const currentCategory = categories.find(cat => cat.slug === Astro.params.category);
+
+const categoryName = currentCategory ? currentCategory.name : '';
+const categoryDescription = currentCategory ? currentCategory.description : '';
+const categoryId = currentCategory ? currentCategory.id : null;
+
+let posts: Post[] = [];
+let postTitles: string[] = [];
+let postIds: number[] = [];
+let postDates: string[] = [];
 
 
+if (categoryId) {
+  const postsResponse = await fetch(`https://public-api.wordpress.com/wp/v2/sites/wincblogs.wordpress.com/posts?categories=${categoryId}`);
+  posts = await postsResponse.json();
 
-const postTitles = posts.map(post => post.title.rendered);
-const postIds = posts.map(post => post.id);
-const postDates = posts.map(post => post.date);
+  postTitles = posts.map(post => post.title.rendered);
+  postIds = posts.map(post => post.id);
+  postDates = posts.map(post => post.date);
 
+}
 ---
+
 <Layout title="wincblog">
   <main>
-    <p class="guide"><a href="/">home</a><a href="/blog">blog</a><a href={`/category/${currentCategory.slug}`}>{currentCategory.name}</a></p>
-    
+    <p class="guide"><a href="http://localhost:4321">home</a> > <a href="http://localhost:4321">blog</a> > <a href={'http://localhost:4321/${categoryId}'}>Web team</a></p>
     <div class="eye-catch">
-      <h1>{currentCategory.name}</h1>
+      <h1>{categoryName}</h1>
       <div class="carousel">
         <figure>
           <img src="web/picture1.jpg" alt="">
@@ -53,83 +91,82 @@ const postDates = posts.map(post => post.date);
           <img src="web/picture5.jpg" alt="">
         </figure>
       </div>
+      <script>
+        const carousel = document.querySelector('.carousel figure') as HTMLElement | null;
+        let currentAngle = 0;
+        const rotationStep = 72; // 各画像の回転角度 (360度 / 5枚 = 72度)
+        const totalImages = 5; // カルーセルにある画像の枚数
+      
+        if (carousel) {
+          document.addEventListener('click', (e) => {
+            const viewportWidth = window.innerWidth;
+      
+            if (e.clientX < viewportWidth / 2) {
+              // 画面の左半分をクリックしたとき
+              currentAngle += rotationStep; // 左に回転
+            } else {
+              // 画面の右半分をクリックしたとき
+              currentAngle -= rotationStep; // 右に回転
+            }
+      
+            // 回転を適用し、連続してクリックしても続けて回転するようにする
+            carousel.style.transform = `rotateY(${currentAngle}deg)`;
+          });
+        }
+      </script>
+            
     </div>
 
     <div class="New_articles">
       {postTitles.length > 0 ? (
         <ul>
-          {postTitles.map((postTitle: string, index: number) => {
-            const year = postDates[index].substring(0, 4);
-            const month = postDates[index].substring(5, 7);
-            const date = postDates[index].substring(8, 10);
-            const postId = postIds[index];
-            const contentSnippet = posts[index].content.rendered.substring(0, 50);
+  {postTitles.map((postTitle, index) => {
+    const year = postDates[index].substring(0, 4);
+    const month = postDates[index].substring(5, 7);
+    const date = postDates[index].substring(8, 10);
+    const postId = postIds[index];
+    const content = posts[index].content.rendered.substring(4, 26);
 
-            return (
-        <li>
-          <div class="blog">
-            <div class="picture">
-              <a href={`/posts/${postId}`}>
-                <img
-                  src={`https://wincblogs.wordpress.com/wp-content/uploads/${year}/${month}/${postId}.jpg`}
-                  alt={postTitle}
-                  class="post-image"
-                />
-              </a>
+    return (
+    <li>{index.toString()}{/* index を直接表示 */}
+        <div class="blog">
+          <div class="picture">
+            <a href={`./${postIds[index]}`}>
+              <img
+                src={`https://wincblogs.wordpress.com/wp-content/uploads/${year}/${month}/${postId}.jpg`}
+                alt={postTitle}
+                class="post-image"
+              />
+            </a>
+          </div>
+          <div class="article_sepalate_line"></div>
+          <div class="post">
+            <a href={`./${postIds[index]}`} class="title">{postTitle}</a>
+            <p class="date">投稿日: {year}年{month}月{date}日</p>
+            <p class="explanation">{content}・・・</p>
+            <div class="tsuzuki_botton">
+              <a href={`./${postIds[index]}`} class="tsuzuki">続きを読む</a>
             </div>
-                  <div class="article_sepalate_line"></div>
-                  <div class="post">
-                    <a href={`/posts/${postId}`} class="title">{postTitle}</a>
-                    <p class="date">投稿日: {year}年{month}月{date}日</p>
-                    <p class="explanation">{contentSnippet}...</p>
-                    <div class="tsuzuki_botton">
-                      <a href={`/posts/${postId}`} class="tsuzuki">続きを読む</a>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
+          </div>
+        </div>
+      </li>
+    );
+  })}
+</ul>
       ) : (
         <p>投稿がありません</p>
       )}
     </div>
-
-    <div class="additional-content">
-      <h1>{currentCategory.name}</h1>
-      {postTitles.length > 0 ? (
-        postTitles.map((postTitle: string, index: number) => {
-          const year = postDates[index].substring(0, 4);
-          const month = postDates[index].substring(5, 7);
-          const date = postDates[index].substring(8, 10);
-          const postId = postIds[index];
-          const contentSnippet = posts[index].content.rendered.substring(0, 50); // Sample content
-
-          return (
-            <div>
-              <h2>{postTitle}</h2>
-              <p>{`${year}-${month}-${date}`}</p>
-              <p>{contentSnippet}</p>
-            </div>
-          );
-        })
-      ) : (
-        <p>No posts found.</p>
-      )}
-    </div>
-
     <footer>
-      <p>© 2024 Copyright: <span><a href="https://www.winc.ne.jp/">コンピュータ研究会・WINC</a></span></p>
+      <p>© 2024 Copyright: <span><a>コンピュータ研究会・WINC</a></span></p>
     </footer>
   </main>
 </Layout>
 
-
 <style>
   body {
     margin: 0;
-    background-image: url('./public/g48.png');
+    background-image: url(public/Group 48.png);
     background-size: 101%;
     background-position: -22px 70px;
   }
@@ -208,6 +245,17 @@ const postDates = posts.map(post => post.date);
     line-height: normal;
     position: relative;
     z-index: 5 !important;
+  }
+
+  h1::before {
+    content: "";
+    width: 504px;
+    height: 98px;
+    background: #FFF;
+    filter: blur(10px);
+    position: absolute;
+    z-index: -1 !important;
+    top: 55px;
   }
 
   .post-image {
