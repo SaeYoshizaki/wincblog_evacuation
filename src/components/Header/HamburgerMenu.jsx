@@ -30,13 +30,13 @@ export default function HamburgerMenu() {
             
           </li>
           <li><a href="/">Home</a></li>
-          <li><a href="/web">Web</a></li>
-          <li><a href="/app">App</a></li>
-          <li><a href="/competitive_programming">競プロ</a></li>
-          <li><a href="/hackathon">hackathon</a></li>
-          <li><a href="/other">other</a></li>
-          <li><a href="/articles/article">Tech Blogs</a></li>
-          <li><a href="/articles/users">Members</a></li>
+          <li><a href="/wincblog_evacuation/web">Web</a></li>
+          <li><a href="/wincblog_evacuation/app">App</a></li>
+          <li><a href="/wincblog_evacuation/competitive_programming">競プロ</a></li>
+          <li><a href="/wincblog_evacuation/hackathon">hackathon</a></li>
+          <li><a href="/wincblog_evacuation/other">other</a></li>
+          <li><a href="/wincblog_evacuation/articles/article">Tech Blogs</a></li>
+          <li><a href="/wincblog_evacuation/articles/users">Members</a></li>
         </ul>
       </nav>
     </div>
