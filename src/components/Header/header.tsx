@@ -36,9 +36,9 @@ const RetWindowWidth = () => {
         >
           <div style={{ display: "flex" }}>
             <div>
-              <a href="/">
+              <a href="/wincblog_evacuation/">
                 <img
-                  src="/logo.png"
+                  src="C:/Users/saeyoshizaki/Desktop/サークル/winc/2024hackathon/blog_evacuation/public/other.png"
                   width={windowWidth < 768 ? 167 : 223}
                   height={windowWidth < 768 ? 42 : 57}
                   alt="header"

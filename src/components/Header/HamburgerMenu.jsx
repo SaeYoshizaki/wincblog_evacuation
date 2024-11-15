@@ -29,7 +29,7 @@ export default function HamburgerMenu() {
             </div>
             
           </li>
-          <li><a href="/">Home</a></li>
+          <li><a href="/wincblog_evacuation/">Home</a></li>
           <li><a href="/wincblog_evacuation/web">Web</a></li>
           <li><a href="/wincblog_evacuation/app">App</a></li>
           <li><a href="/wincblog_evacuation/competitive_programming">競プロ</a></li>

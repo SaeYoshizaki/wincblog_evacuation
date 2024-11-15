@@ -24,7 +24,7 @@ export async function getStaticPaths() {
   const categories = await res.json();
 
   const paths = categories.map((category: { slug: string; }) => ({
-    params: { category: decodeURIComponent(category.slug) }, // デコードしてから使用
+    params: { category: decodeURIComponent(category.slug) }, 
   }));
 
   return paths;
