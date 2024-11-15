@@ -38,7 +38,7 @@ const RetWindowWidth = () => {
             <div>
               <a href="/wincblog_evacuation/">
                 <img
-                  src="C:/Users/saeyoshizaki/Desktop/サークル/winc/2024hackathon/blog_evacuation/public/other.png"
+                  src="../../../public/logo.png"
                   width={windowWidth < 768 ? 167 : 223}
                   height={windowWidth < 768 ? 42 : 57}
                   alt="header"
